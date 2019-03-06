@@ -1,17 +1,21 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "Weather App ",
-  "main": "index.js",
-  "scripts": {
-    "start": "parcel -p 3000 src/index.html",
-    "build": "parcel src/index.html --out-dir production/ --public-url ./",
-    "push-dist": "push-dir --dir=dist --branch=gh-pages"
-  },
-  "repository": "https://github.com/babayK0/Weather-App.git",
+  "description": "Weather App on components",
+  "main": "./index.html",
   "author": "babayK0 <bohdan.babay@gmail.com>",
-  "license": "MIT",
+  "repository": "https://github.com/babayK0/Weather-App.git",
   "homepage": "https://github.com/babayK0/Weather-App#readme",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "prebuild-dev": "shx rm -rf dist/",
+    "build-dev": "parcel build ./src/index.html --no-minify --public-url ./",
+    "prebuild": "shx rm -rf dist/",
+    "build": "parcel build ./src/index.html --public-url ./",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "autoprefixer": "^9.4.9",
@@ -20,7 +24,8 @@
     "babel-preset-env": "^1.7.0",
     "node-sass": "^4.11.0",
     "parcel-bundler": "^1.11.0",
-    "sass": "^1.17.2"
+    "sass": "^1.17.2",
+    "shx": "^0.3.2"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"

@@ -1,0 +1,240 @@
+.body {
+  background-color: $blue;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  // background-color: $white;/*delete*/
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    '. . s s s s s s s s i i'
+    '. . . . w w w w w . i i'
+    '. . . . w w w w w . i i'
+    '. . f f f f f f f f . .';
+}
+
+/*searchbar*/
+.search-container {
+  grid-area: s;
+  // background-color: purple;/*delete*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar-wrapper {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-form {
+  width: calc(100% - 5px);
+  position: relative;
+}
+
+.searchbar {
+  width: inherit;
+  height: 40px;
+  padding-left: 0.5rem;
+  border: none;
+  border-radius: 75px;
+  color: $grey;
+  font-size: 1.5rem;
+  font-weight: 400;
+  outline: none;
+}
+
+.search-button{
+  position: absolute;
+  right: -5px;
+  top: 0;
+  height: 100%;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: $lightblue;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition: 0.3s linear;
+}
+
+.search-button:hover{
+  background-color: darken($lightblue, 15%);
+}
+
+/*main weather*/
+.weather-container {
+  grid-area: w;
+  // background-color: limegreen;/*delete*/
+  display: flex;
+  justify-content: space-around;
+  color: $grey;
+}
+
+.weather-subinfo{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subinfo-item{
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.day{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.date{
+  margin-bottom: 30px;
+}
+
+.weather-maininfo{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: $white;
+}
+
+.maininfo-item{
+  margin-bottom: 5px;
+}
+
+.city{
+  font-size: 1.1rem;
+}
+
+.favorite{
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 15px;
+  background-color: transparent;
+  border: 2px solid $yellow;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.favorite:hover{
+  background-color: $yellow;
+}
+
+.swap{
+  text-transform: uppercase;
+  text-align: center;
+  margin-left: 15px;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  color: $blue;
+  font-weight: 700;
+  transition: 0.3s linear;
+}
+
+.swap:hover{
+  background-color: lighten(white, 50%);
+}
+
+.image-wrapper{
+  width: 120px;
+  height: 90px;
+  border: 1px solid white /*delete*/
+}
+
+.main-weather{
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+
+.weather-descr{
+  font-size: 1.2rem;
+}
+
+.extra-descr{
+  font-size: 0.75rem;
+}
+
+
+/*forecast*/
+.forecast-container {
+  grid-area: f;
+  border-top: 1px solid $white;
+  // background-color: yellow;/*delete*/
+}
+
+.forecast-list{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  color: $white;
+}
+
+.forecast-item{
+  margin-top: 5px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.forecast-item:hover{
+  background-color: lighten($blue, 10%);
+}
+
+.forecast-day{
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.forecast-temp-h{
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.forecast-temp-l{
+  font-size: 1.2rem;
+  color: $grey;
+  font-weight: 400;
+}
+
+
+.forecast-img-wrapper{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+
+/*image*/
+.bigimg-container {
+  grid-area: i;
+  // background-color: tomato;/*delete*/
+}
