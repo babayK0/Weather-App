@@ -1,4 +1,5 @@
 .body {
+  margin: 0;
   background-color: $blue;
   font-family: 'Roboto', sans-serif;
 }
@@ -12,8 +13,8 @@
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     '. . s s s s s s s s i i'
-    '. . . . w w w w w . i i'
-    '. . . . w w w w w . i i'
+    '. . w w w w w w w w i i'
+    '. . w w w w w w w w i i'
     '. . f f f f f f f f . .';
 }
 
@@ -73,15 +74,15 @@
   grid-area: w;
   // background-color: limegreen;/*delete*/
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   color: $grey;
 }
 
 .weather-subinfo{
-  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  // background-color: rgb(0, 238, 255);/*delete*/
 }
 
 .subinfo-item{
@@ -100,11 +101,11 @@
 }
 
 .weather-maininfo{
-  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   color: $white;
+  // background-color: rgb(26, 41, 107);/*delete*/
 }
 
 .maininfo-item{
@@ -196,6 +197,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: 0.2s linear;
 }
 
 .forecast-item:hover{
