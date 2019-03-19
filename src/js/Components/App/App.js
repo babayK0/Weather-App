@@ -1,15 +1,22 @@
-import Component from "../../framework/Component";
-import {Temperature} from '../Temperature';
+import Component from '../../framework/Component';
+import { Temperature } from '../Temperature';
 
-export default class App extends Component{
+export default class App extends Component {
   constructor(host) {
     super(host);
   }
 
   render() {
-    const  temp = document.createElement('div');
-    new Temperature(temp, {temperature: 5, unit: 'C',});
-    
-    return ['hi', temp];
+    return [
+      'Temperature range',
+      {
+        tag: Temperature,
+        props: {
+          temperature: 7,
+          unit: 'C'
+        }
+      }
+    ];
   }
+  
 }

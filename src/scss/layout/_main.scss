@@ -13,9 +13,9 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
-    '. . s s s s s s s s i i'
-    '. . w w w w w w w w i i'
-    '. . w w w w w w w w i i'
+    '. . s s s s s s s s . .'
+    '. . w w w w w w w w . .'
+    '. . w w w w w w w w . .'
     '. . f f f f f f f f . .';
 }
 
@@ -45,10 +45,15 @@
   padding-left: 0.5rem;
   border: none;
   border-radius: 75px;
-  color: $grey;
+  background-color: darken($grey, 10%);
+  color: inherit;
   font-size: 1.5rem;
   font-weight: 400;
   outline: none;
+}
+
+.searchbar::placeholder{
+  color: $white;
 }
 
 .search-button{
@@ -73,10 +78,13 @@
 /*main weather*/
 .weather-container {
   grid-area: w;
-  // background-color: limegreen;/*delete*/
+  background-color: $grey;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
-  color: $grey;
+  color: $white;
 }
 
 .weather-subinfo{
@@ -114,13 +122,15 @@
 }
 
 .city{
-  font-size: 1.1rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .favorite{
   width: 1.2rem;
   height: 1.2rem;
-  margin-right: 15px;
+  margin-right: 10px;
   background-color: transparent;
   border: 2px solid $yellow;
   border-radius: 50%;
@@ -136,20 +146,21 @@
 .swap{
   text-transform: uppercase;
   text-align: center;
-  margin-left: 15px;
   width: 2.2rem;
   height: 2.2rem;
+  margin-left: 10px;
   border: none;
   border-radius: 50%;
   outline: none;
   cursor: pointer;
-  color: $blue;
+  color: $white;
   font-weight: 700;
   transition: 0.3s linear;
+  background-color: $grey;
 }
 
 .swap:hover{
-  background-color: lighten(white, 50%);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .image-wrapper{
@@ -176,7 +187,7 @@
 .forecast-container {
   grid-area: f;
   border-top: 1px solid $white;
-  // background-color: yellow;/*delete*/
+  background-color: $grey;
 }
 
 .forecast-list{
@@ -191,7 +202,6 @@
 }
 
 .forecast-item{
-  margin-top: 5px;
   width: 20%;
   display: flex;
   flex-direction: column;
@@ -202,7 +212,7 @@
 }
 
 .forecast-item:hover{
-  background-color: lighten($blue, 10%);
+  background-color: darken($grey, 20%);
 }
 
 .forecast-day{
@@ -219,7 +229,6 @@
 
 .forecast-temp-l{
   font-size: 1.2rem;
-  color: $grey;
   font-weight: 400;
 }
 
@@ -236,8 +245,13 @@
 
 
 
-/*image*/
-.bigimg-container {
-  grid-area: i;
-  // background-color: tomato;/*delete*/
+/*video*/
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: $white;/*delete*/
 }
