@@ -5,7 +5,7 @@ export default class Component {
     this._render();
   }
   _render() {
-    // this.host.innerHTML = '';
+    this.host.innerHTML = '';
     let content = this.render();
     
     if (typeof content === 'string') {

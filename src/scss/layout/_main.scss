@@ -1,6 +1,6 @@
 .body {
   margin: 0;
-  background-color: $blue;
+  background-color: $greyDark;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -58,13 +58,13 @@
 
 .search-button{
   position: absolute;
-  right: -5px;
+  right: -4px;
   top: 0;
   height: 100%;
   width: 40px;
   border: none;
   border-radius: 50%;
-  background-color: $lightblue;
+  background-color: $grey;
   cursor: pointer;
   overflow: hidden;
   outline: none;
@@ -72,15 +72,15 @@
 }
 
 .search-button:hover{
-  background-color: darken($lightblue, 15%);
+  background-color: $greyDark;
 }
 
 /*main weather*/
 .weather-container {
   grid-area: w;
   background-color: $grey;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -160,7 +160,7 @@
 }
 
 .swap:hover{
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $greyDark;
 }
 
 .image-wrapper{
