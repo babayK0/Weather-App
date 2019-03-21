@@ -36,18 +36,19 @@
       <div class="weather-container">
         <div class="weather-maininfo">
           <span class="city maininfo-item">
-            <button
-              type="button"
-              class="favorite"
-              title="Add to favorite"
-            ></button>
+            <label class="favorite" title="Like this !">
+              <input type="checkbox" class="checkbox-favorite checkbox" />
+              <span class="like"></span>
+            </label>
             Kyiv
-            <button type="button" class="swap">
-              &deg;<span class="celsius">c</span>
-              <!-- <span class="fahrenheit">f</span> -->
-            </button>
+            <label class="swap" title="Change units">
+              <input type="checkbox" class="checkbox-units checkbox" />
+              <div class="units"></div>
+            </label>
           </span>
-          <div class="image-wrapper maininfo-item"></div>
+          <div class="image-wrapper maininfo-item">
+            <img src="./img/rainD.png" alt="">
+          </div>
           <div class="main-weather maininfo-item">
             <span class="temperature-info">16</span>°
             <span class="weather-descr">Rain</span>
@@ -126,7 +127,7 @@
       <!-- video -->
       <div class="video-container">
         <video autoplay muted loop id="weatherVideo">
-          <source src="./video/sun.mp4" type="video/mp4" />
+          <source src="./video/min_sun.mp4" type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
       </div>
