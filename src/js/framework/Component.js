@@ -20,7 +20,7 @@ export default class Component {
 
   /* @returns {string|[string|HTMLElement|Component]} */
   render() {
-    return 'wtf';
+    return 'Something goes wrong =)';
   }
 
   /*
@@ -35,7 +35,8 @@ export default class Component {
     } else {
       if(element.tag) {
         if (typeof element.tag === 'function') {
-          const container = document.createElement('div');
+          const container = document.createDocumentFragment();/*must be 'div' */
+
           new element.tag(container, element.props);
           return container;
         } else {
