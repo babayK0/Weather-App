@@ -2,6 +2,7 @@ import Component from '../../framework/Component';
 import { Temperature } from '../Temperature';
 import { SearchBar } from '../SearchBar';
 import { WeatherForecast } from '../WeatherForecast';
+import CurentWeather from '../CurentWeather/CurentWeather';
 
 export default class App extends Component {
   constructor(host) {
@@ -29,7 +30,18 @@ export default class App extends Component {
       },
       {
         tag: 'div',
-        classList: ['main-container']
+        classList: ['main-container'],
+        children: [
+          {
+            tag: CurentWeather,
+            props: {
+              // src: ,
+              // temperature: 
+              weatherDescription: 'Rain',
+              extraWeatherDescription: 'Small Rain'
+            }
+          }
+        ]
       },
       {
         tag: 'div',
@@ -38,8 +50,8 @@ export default class App extends Component {
           {
             tag: WeatherForecast,
             props: {
-              unit: 'a',
-            },
+              // src: ,
+            }
           }
         ]
       },

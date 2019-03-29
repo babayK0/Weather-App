@@ -2,20 +2,23 @@ export default class Component {
   constructor(host, props = {}) {
     this.host = host;
     this.props = props;
+    this.init();
     this._render();
+  }
+  init() {
   }
   _render() {
     this.host.innerHTML = '';
     let content = this.render();
     
-    if (typeof content === 'string') {
-      this.host.innerHTML = content;
-    } else {
-      content.map(item => this._vDomPrototypeElementToHtmlElement(item))
-        .forEach(htmlElement => {
-          this.host.appendChild(htmlElement);
-        });
+    if(!Array.isArray(content)) {
+      content = [content]; 
     }
+
+    content.map(item => this._vDomPrototypeElementToHtmlElement(item))
+      .forEach(htmlElement => {
+        this.host.appendChild(htmlElement);
+      });
   }
 
   /* @returns {string|[string|HTMLElement|Component]} */
@@ -36,7 +39,7 @@ export default class Component {
       if(element.tag) {
         if (typeof element.tag === 'function') {
           const container = document.createDocumentFragment();/*must be 'div' */
-
+          // const container = document.createElement('div');
           new element.tag(container, element.props);
           return container;
         } else {

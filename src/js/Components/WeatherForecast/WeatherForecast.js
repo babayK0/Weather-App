@@ -47,8 +47,8 @@ export default class WeatherForecast extends Component {
             tag: WeatherForecastItem,
             props: {
               // data: this.props.fiveDayData.list[4],//
-              src: clearD,
-              temperature: 7,
+              src: this.props.src, /*******/
+              temperature: 7, /***********/
               units: 'C',
             },
           },
