@@ -5,19 +5,20 @@ export default class Component {
     this.init();
     this._render();
   }
-  init() {
-  }
+  init() {}
   _render() {
     this.host.innerHTML = '';
     let content = this.render();
-    
-    if(!Array.isArray(content)) {
-      content = [content]; 
+
+    if (!Array.isArray(content)) {
+      content = [content];
     }
 
-    content.map(item => this._vDomPrototypeElementToHtmlElement(item))
+    content
+      .map(item => this._vDomPrototypeElementToHtmlElement(item))
       .forEach(htmlElement => {
-        this.host.appendChild(htmlElement);
+        if (Array.isArray(htmlElement)) this.host.append(...htmlElement);
+        else this.host.append(htmlElement);
       });
   }
 
@@ -32,14 +33,20 @@ export default class Component {
   */
   _vDomPrototypeElementToHtmlElement(element) {
     if (typeof element === 'string') {
-      const htmlElement = document.createElement('div');
-      htmlElement.innerHTML = element;
-      return htmlElement;
+      let container;
+      const containsHtmlTags = /[<>&]/.test(element);
+      if (containsHtmlTags) {
+        const dirtyTrickContainer = document.createElement('div'); // fake div, never actually used
+        dirtyTrickContainer.innerHTML = element;
+        container = Array.from(dirtyTrickContainer.childNodes);
+      } else {
+        container = document.createTextNode(element);
+      }
+      return container;
     } else {
-      if(element.tag) {
+      if (element.tag) {
         if (typeof element.tag === 'function') {
-          const container = document.createDocumentFragment();/*must be 'div' */
-          // const container = document.createElement('div');
+          const container = document.createElement(element.containerTag || 'div');
           new element.tag(container, element.props);
           return container;
         } else {
@@ -50,7 +57,7 @@ export default class Component {
           }
 
           //ensure following element properties are Array
-          ['classList', 'attributes'].forEach(item =>{
+          ['classList', 'attributes'].forEach(item => {
             if (element[item] && !Array.isArray(element[item])) {
               element[item] = [element[item]];
             }
@@ -61,6 +68,16 @@ export default class Component {
           if (element.attributes) {
             element.attributes.forEach(attributeSpec => {
               container.setAttribute(attributeSpec.name, attributeSpec.value);
+            });
+          }
+
+          // process eventHandlers
+          if (element.eventHandlers) {
+            Object.keys(element.eventHandlers).forEach(eventType => {
+              container.addEventListener(
+                eventType,
+                element.eventHandlers[eventType]
+              );
             });
           }
 

@@ -1,4 +1,5 @@
 import Component from '../../framework/Component';
+import WeatherDataService from "../../Services/WeatherDataService.js";
 import WeatherForecastItem from '../WeatherForecastItem/WeatherForecastItem';
 
 import clearD from '../../../img/clearD.png';
@@ -27,6 +28,7 @@ export default class WeatherForecast extends Component {
         children: [
           {
             tag: WeatherForecastItem,
+            containerTag: 'li',
             props: {
               // data: this.props.fiveDayData.list[4],
               src: clearD,
@@ -36,6 +38,7 @@ export default class WeatherForecast extends Component {
           },
           {
             tag: WeatherForecastItem,
+            containerTag: 'li',
             props: {
               // data: this.props.fiveDayData.list[4],
               src: clearD,
@@ -45,15 +48,17 @@ export default class WeatherForecast extends Component {
           },
           {
             tag: WeatherForecastItem,
+            containerTag: 'li',
             props: {
               // data: this.props.fiveDayData.list[4],//
-              src: this.props.src, /*******/
+              src: clearD, /*******/
               temperature: 7, /***********/
               units: 'C',
             },
           },
           {
             tag: WeatherForecastItem,
+            containerTag: 'li',
             props: {
               // data: this.props.fiveDayData.list[4],//
               src: clearD,
@@ -63,6 +68,7 @@ export default class WeatherForecast extends Component {
           },
           {
             tag: WeatherForecastItem,
+            containerTag: 'li',
             props: {
               // data: this.props.fiveDayData.list[4],//
               src: clearD,

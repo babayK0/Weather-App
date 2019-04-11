@@ -18,44 +18,37 @@ export default class WeatherForecastItem extends Component {
   render() {
     return [
       {
-        tag: 'li',
-        classList: ['forecast-item'],
+        tag: 'span',
+        classList: ['forecast-day'],
+        content: this.shortenedDayOfWeek()
+      },
+      {
+        tag: 'div',
+        classList: ['forecast-img-wrapper'],
         children: [
           {
-            tag: 'span',
-            classList: ['forecast-day'],
-            content: this.shortenedDayOfWeek(),
-          },
-          {
-            tag: 'div',
-            classList: ['forecast-img-wrapper'],
-            children: [
+            tag: 'img',
+            attributes: [
               {
-                tag: 'img',
-                attributes: [
-                  {
-                    name: 'alt',
-                    value: 'weather image',
-                  },
-                  {
-                    name: 'src',
-                    value: this.props.src,
-                  },
-                  {
-                    name: 'draggable',
-                    value: false,
-                  },
-                ],
+                name: 'alt',
+                value: 'weather image'
               },
-            ],
-          },
-          {
-            tag: 'span',
-            classList: ['forecast-temp'],
-            content:
-              Math.round(this.props.temperature) + `&deg;` + this.props.units,
-          },
-        ],
+              {
+                name: 'src',
+                value: this.props.src
+              },
+              {
+                name: 'draggable',
+                value: false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        tag: 'span',
+        classList: ['forecast-temp'],
+        content: Math.round(this.props.temperature) + `&deg;` + this.props.units
       }
     ];
   }

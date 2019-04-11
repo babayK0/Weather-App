@@ -2,62 +2,33 @@ import Component from '../../framework/Component';
 import { Temperature } from '../Temperature';
 import { SearchBar } from '../SearchBar';
 import { WeatherForecast } from '../WeatherForecast';
-import CurentWeather from '../CurentWeather/CurentWeather';
+import { CurentWeather } from '../CurentWeather';
+import { VideoWeather } from '../VideoWeather';
 
 export default class App extends Component {
   constructor(host) {
     super(host);
   }
 
+  init() {}
+  
   render() {
     return [
       {
-        tag: 'div',
-        classList: ['searchbar-container'],
-        children: [
-          {
-            tag: SearchBar,
-            props: {
-              attributes: [
-                {
-                  name: 'autocomplete',
-                  value: 'off'
-                }
-              ]
-            }
-          }
-        ]
+        tag: SearchBar,
+        containerTag: 'div',
       },
       {
-        tag: 'div',
-        classList: ['main-container'],
-        children: [
-          {
-            tag: CurentWeather,
-            props: {
-              // src: ,
-              // temperature: 
-              weatherDescription: 'Rain',
-              extraWeatherDescription: 'Small Rain'
-            }
-          }
-        ]
+        tag: CurentWeather,
+        containerTag: 'div',
       },
       {
-        tag: 'div',
-        classList: ['forecast-container'],
-        children: [
-          {
-            tag: WeatherForecast,
-            props: {
-              // src: ,
-            }
-          }
-        ]
+        tag: WeatherForecast,
+        containerTag: 'div',
       },
       {
-        tag: 'div',
-        classList: ['video-container']
+        tag: VideoWeather,
+        containerTag: 'div'
       }
     ];
   }

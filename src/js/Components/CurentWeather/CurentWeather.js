@@ -1,8 +1,21 @@
 import Component from "../../framework/Component";
-import { spawn } from "child_process";
+import WeatherDataService from "../../Services/WeatherDataService.js";
 export default class CurentWeather extends Component{
   constructor(host, props) {
     super(host, props);
+    WeatherDataService.getCurrentWeather().then(result => console.log(result));
+  }
+
+  convertTime(UNIX_timestamp,day) {
+    let dt = new Date(UNIX_timestamp * 1000);
+    let daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let dayOfWeek = daysOfWeek[newDate.getDay()];
+    let year = dt.getFullYear();
+    let month = (`0${dt.getMonth()+1}`).slice(-2);
+    let date = (`0${dt.getDate()}`).slice(-2);
+    let time = `${date}.${month}.${year}`;
+    if(day) return dayOfWeek;
+    else return time;
   }
 
   render(){
@@ -87,7 +100,7 @@ export default class CurentWeather extends Component{
                   },
                   {
                     name: 'src',
-                    value: this.props.src,
+                    // value: src
                   },
                   {
                     name: 'draggable',
@@ -110,14 +123,14 @@ export default class CurentWeather extends Component{
               {
                 tag: 'span',
                 classList: ['weather-descr'],
-                content: this.props.weatherDescription,
+                content: 'Rain',//
               },
             ],
           },
           {
             tag: 'span',
             classList: ['extra-descr'],
-            content: this.props.extraWeatherDescription,
+            content: 'Small Rain',//
           },
         ]
       },
@@ -138,50 +151,17 @@ export default class CurentWeather extends Component{
           {
             tag: 'span',
             classList: ['wind', 'subinfo-item'],
-            children: [
-              {
-                tag: 'span',
-                classList: ['wind-info'],
-                content: 9,//
-              },
-              {
-                tag: 'span',
-                classList: ['wind-unit'],
-                content: ' km/h',//
-              }
-            ],
+            content: Math.round(this.props.wind) + ` km/h`,
           },
           {
             tag: 'span',
             classList: ['humidity', 'subinfo-item'],
-            children: [
-              {
-                tag: 'span',
-                classList: ['humidity-info'],
-                content: 18,
-              },
-              {
-                tag: 'span',
-                classList: ['humidity-unit'],
-                content: ' %',
-              }
-            ],
+            content: Math.round(this.props.wind) + ` %`,
           },
           {
             tag: 'span',
             classList: ['pressure', 'subinfo-item'],
-            children: [
-              {
-                tag: 'span',
-                classList: ['pressure-info'],
-                content: 102,
-              },
-              {
-                tag: 'span',
-                classList: ['pressure-unit'],
-                content: ' atm',
-              }
-            ],
+            content: Math.round(this.props.wind) + ` atm`,
           },
         ]
       },

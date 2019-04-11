@@ -10,17 +10,57 @@
   color: $white;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 0.5fr, 1fr, 1f, 1fr;
   grid-template-areas:
     '. . s s s s s s s s . .'
-    '. . w w w w w w w w . .'
-    '. . w w w w w w w w . .'
-    '. . f f f f f f f f . .';
+    '. . . . w w w w . . . .'
+    '. . . . w w w w . . . .'
+    '. . . . f f f f . . . .';
+    // change on small screens 
     justify-items: center;
 }
 
-/*searchbar*/
+.container > div:nth-child(1) {
+  grid-area: s;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.container > div:nth-child(2) {
+  grid-area: w;
+  width: 100%;
+  background-color: $grey;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: $white;
+}
+
+.container > div:nth-child(3) {
+  grid-area: f;
+  margin-bottom: 50px;
+  width: 100%;
+  border-top: 1px solid $white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: $grey;
+}
+
+.container > div:nth-child(4) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  min-width: 100%;
+  min-height: 100%;
+  background-color: transparent;
+}
+
+/*searchbar*/
 .searchbar-container {
   grid-area: s;
   width: 60%;
@@ -241,8 +281,11 @@
 /*forecast*/
 .forecast-container {
   grid-area: f;
+  margin-bottom: 50px;
   width: 100%;
   border-top: 1px solid $white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   background-color: $grey;
 }
 
@@ -257,14 +300,22 @@
   color: $white;
 }
 
-.forecast-item{
+// .forecast-item
+.forecast-list > li {
   width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   justify-content: center;
   cursor: pointer;
   transition: 0.2s linear;
+}
+
+// .forecast-item:hover
+.forecast-list > li:hover{
+  background-color: darken($grey, 20%);
 }
 
 .forecast-item:hover{

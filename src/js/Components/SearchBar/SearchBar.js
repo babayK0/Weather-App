@@ -36,6 +36,10 @@ export default class SearchBar extends Component {
                 value: 'Type city name',
               },
               {
+                name: 'autocomplete',
+                value: 'off'
+              },
+              {
                 name: 'required',
               }
             ]
@@ -48,7 +52,8 @@ export default class SearchBar extends Component {
                 name: 'title',
                 value: "What's the weather today?",
               }
-            ]
+            ],
+            
           },
         ]
       }
