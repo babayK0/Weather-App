@@ -15,3 +15,6 @@ yarn-debug.log*
 yarn-error.log*
 .cache
 /dist
+/src/js/Components/PrettyNumber
+/src/js/Components/Counter
+/src/js/Components/CountControls
