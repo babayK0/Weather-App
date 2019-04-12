@@ -6,6 +6,12 @@ export default class Component {
     this._render();
   }
   init() {}
+
+  updateState(stateDelta) {
+    this.state = Object.assign({}, this.state, stateDelta);
+    this._render();
+  }
+
   _render() {
     this.host.innerHTML = '';
     let content = this.render();
@@ -46,13 +52,15 @@ export default class Component {
     } else {
       if (element.tag) {
         if (typeof element.tag === 'function') {
-          const container = document.createElement(element.containerTag || 'div');
+          const container = document.createElement(
+            element.containerTag || 'div'
+          );
           new element.tag(container, element.props);
           return container;
         } else {
           //string
           const container = document.createElement(element.tag);
-          if (element.content) {
+          if (element.content !== undefined) {
             container.innerHTML = element.content;
           }
 
