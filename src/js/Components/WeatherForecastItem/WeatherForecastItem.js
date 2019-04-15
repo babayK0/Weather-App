@@ -1,18 +1,8 @@
 import Component from '../../framework/Component';
+import DateConvertor from '../../Services/DateConvertor.js'
 export default class WeatherForecastItem extends Component {
   constructor(host, props) {
     super(host, props);
-  }
-
-  shortenedDayOfWeek(day) {
-    /*make day of week from dt_txt */
-
-    // day = this.props.data.dt_txt;
-    day = '2019-03-26 12:00:00';
-    let date = new Date(day);
-    let dateArray = date.toString().split(' ');
-    let dayOfWeek = dateArray[0];
-    return dayOfWeek;
   }
 
   render() {
@@ -20,7 +10,7 @@ export default class WeatherForecastItem extends Component {
       {
         tag: 'span',
         classList: ['forecast-day'],
-        content: this.shortenedDayOfWeek()
+        content: DateConvertor.shortenedDayOfWeek(this.props.dayOfWeek),
       },
       {
         tag: 'div',
