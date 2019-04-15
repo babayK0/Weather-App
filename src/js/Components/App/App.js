@@ -1,5 +1,4 @@
 import Component from '../../framework/Component';
-import { Temperature } from '../Temperature';
 import { SearchBar } from '../SearchBar';
 import { WeatherForecast } from '../WeatherForecast';
 import { CurentWeather } from '../CurentWeather';

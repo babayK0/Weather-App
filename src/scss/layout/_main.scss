@@ -1,6 +1,6 @@
 .body {
   margin: 0;
-  background-color: $greyDark;
+  background-color: $black;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -10,12 +10,12 @@
   color: $white;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 0.5fr, 1fr, 1f, 1fr;
+  grid-template-rows: 0.5fr, 1fr, 1fr, 1fr;
   grid-template-areas:
     '. . s s s s s s s s . .'
-    '. . . . w w w w . . . .'
-    '. . . . w w w w . . . .'
-    '. . . . f f f f . . . .';
+    '. . . w w w w w w . . .'
+    '. . . w w w w w w . . .'
+    '. . . f f f f f f . . .';
     // change on small screens 
     justify-items: center;
 }
@@ -36,7 +36,7 @@
   border-top-right-radius: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   color: $white;
 }
 
@@ -352,4 +352,34 @@
   min-width: 100%;
   min-height: 100%;
   background-color: transparent;
+}
+
+.video{
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.typewriter{
+  overflow: hidden;
+  font-size: 1.7rem;//change on small screens
+  border-right: .15rem solid $yellow;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15rem;
+  animation: 
+    typing 2.5s steps(40, end),
+    blink-caret .5s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 63% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: $yellow; }
 }
