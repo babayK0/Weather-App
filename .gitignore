@@ -18,3 +18,5 @@ yarn-error.log*
 /src/js/Components/PrettyNumber
 /src/js/Components/Counter
 /src/js/Components/CountControls
+#non-compressed video
+/src/video/non-compressed
