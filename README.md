@@ -17,12 +17,12 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Features which will be added soon
 * *Switch between imperial and metric units*
-* *Detailed forecast for the day of the week (if selected)*
 * *Liked cities list*
 * *History list*
 * *Autocomplete of city*
 * *Handling server errors (such as **404**)*
 * *More responsive layout*
+* *Detailed forecast for the day of the week (if selected)*
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Known Issues
