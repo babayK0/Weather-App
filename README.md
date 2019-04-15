@@ -13,6 +13,8 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 * 5 Days Forecast 
 * Source of data - [Open Weather Map](https://openweathermap.org/)
 * Cool videos :sunglasses:
+
+[*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Features which will be added soon
 * *Switch between imperial and metric units*
 * *Detailed forecast for the day of the week (if selected)*
@@ -21,6 +23,10 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 * *Autocomplete of city*
 * *Handling server errors (such as **404**)*
 * *More responsive layout*
+
+[*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Known Issues
 - [ ] The state of the ForecastWeather component is unstable. (Reset if the city is entered incorrectly)
 - [ ] Some videos are too big
+
+[*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
