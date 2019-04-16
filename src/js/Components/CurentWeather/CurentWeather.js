@@ -91,30 +91,24 @@ export default class CurentWeather extends Component {
 
     if (event.target.value === metric) {
       event.target.value = imperial;
-      localStorage.setItem('units', imperial);
-      localStorage.setItem('unit', 'F');
-      localStorage.setItem('unit', 'F');
-      localStorage.setItem('speed', 'mph');
       this.state.units = imperial;
       this.state.unit = 'F';
       this.state.speed = 'mph';
-      AppState.update('UNITS', {
-        city: this.state.city,
-        units: imperial
-      });
     } else if (event.target.value === imperial) {
       event.target.value = metric;
-      localStorage.setItem('units', metric);
-      localStorage.setItem('unit', 'C');
-      localStorage.setItem('speed', 'm/s');
       this.state.units = metric;
       this.state.unit = 'C';
       this.state.speed = 'm/s';
-      AppState.update('UNITS', {
-        city: this.state.city,
-        units: metric
-      });
     }
+
+    localStorage.setItem('units', this.state.units);
+    localStorage.setItem('unit', this.state.unit);
+    localStorage.setItem('speed', this.state.speed);
+    
+    AppState.update('UNITS', {
+      city: this.state.city,
+      units: this.state.units
+    });
   }
 
   render() {

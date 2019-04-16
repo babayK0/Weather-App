@@ -52,7 +52,6 @@ export default class WeatherForecast extends Component {
     this.state = {
       city: null,
       units: localStorage.getItem('units') ? localStorage.getItem('units') : 'metric',
-      day: null,
     };
   }
 
