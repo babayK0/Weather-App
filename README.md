@@ -25,7 +25,7 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Known Issues
-- [x] ~~The state of the ForecastWeather component is unstable. (Reset if the city is entered incorrectly)~~
+- [x] ~~The state of the WeatherForecast component is unstable. (Reset if the city is entered incorrectly)~~
 - [ ] Some videos are too big
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
