@@ -4,9 +4,9 @@
 Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Course](https://github.com/kottans/frontend) :smile_cat:
 
 ## Table of Contents
-* [Features](https://github.com/babayK0/Weather-App/blob/master/README.md#features)
-* [Features which will be added soon](https://github.com/babayK0/Weather-App/blob/master/README.md#features-which-will-be-added-soon)
-* [Known Issues](https://github.com/babayK0/Weather-App/blob/master/README.md#known-issues)
+* [Features](https://github.com/babayK0/Weather-App#features)
+* [Features which will be added soon](https://github.com/babayK0/Weather-App#features-which-will-be-added-soon)
+* [Known Issues](https://github.com/babayK0/Weather-App#known-issues)
 ### Features
 * Search by City name
 * Current weather 
