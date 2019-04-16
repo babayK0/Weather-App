@@ -21,7 +21,6 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 * *History list*
 * *Autocomplete of city*
 * *Handling server errors (such as **404**)*
-* *More responsive layout*
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Known Issues
