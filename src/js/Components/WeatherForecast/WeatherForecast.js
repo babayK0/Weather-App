@@ -88,7 +88,7 @@ export default class WeatherForecast extends Component {
             tag: WeatherForecastItem,
             containerTag: 'li',
             props: {
-              dayOfWeek: this.forecastWeather.list[4].dt_txt,
+              dayOfWeek: this.forecastWeather.list[4].dt,
               src: `${chooseIcon(this.forecastWeather.list[4].weather[0].icon)}`,
               temperature: this.forecastWeather.list[4].main.temp,
             },
@@ -97,7 +97,7 @@ export default class WeatherForecast extends Component {
             tag: WeatherForecastItem,
             containerTag: 'li',
             props: {
-              dayOfWeek: this.forecastWeather.list[12].dt_txt,
+              dayOfWeek: this.forecastWeather.list[12].dt,
               src: `${chooseIcon(this.forecastWeather.list[12].weather[0].icon)}`,
               temperature: this.forecastWeather.list[12].main.temp,
             },
@@ -106,7 +106,7 @@ export default class WeatherForecast extends Component {
             tag: WeatherForecastItem,
             containerTag: 'li',
             props: {
-              dayOfWeek: this.forecastWeather.list[20].dt_txt,
+              dayOfWeek: this.forecastWeather.list[20].dt,
               src: `${chooseIcon(this.forecastWeather.list[20].weather[0].icon)}`,
               temperature: this.forecastWeather.list[20].main.temp,
             },
@@ -115,7 +115,7 @@ export default class WeatherForecast extends Component {
             tag: WeatherForecastItem,
             containerTag: 'li',
             props: {
-              dayOfWeek: this.forecastWeather.list[28].dt_txt,
+              dayOfWeek: this.forecastWeather.list[28].dt,
               src: `${chooseIcon(this.forecastWeather.list[28].weather[0].icon)}`,
               temperature: this.forecastWeather.list[28].main.temp,
             },
@@ -124,7 +124,7 @@ export default class WeatherForecast extends Component {
             tag: WeatherForecastItem,
             containerTag: 'li',
             props: {
-              dayOfWeek: this.forecastWeather.list[36].dt_txt,
+              dayOfWeek: this.forecastWeather.list[36].dt,
               src: `${chooseIcon(this.forecastWeather.list[36].weather[0].icon)}`,
               temperature: this.forecastWeather.list[36].main.temp,
             },

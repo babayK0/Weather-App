@@ -10,7 +10,7 @@ export default class WeatherForecastItem extends Component {
       {
         tag: 'span',
         classList: ['forecast-day'],
-        content: DateConvertor.shortenedDayOfWeek(this.props.dayOfWeek),
+        content: DateConvertor.convertTime(this.props.dayOfWeek, true).substring(0, 3),
       },
       {
         tag: 'div',

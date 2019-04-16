@@ -10,14 +10,6 @@ class DateConvertor{
     if(day===true) return dayOfWeek;
     else return time;
   }
-
-  shortenedDayOfWeek(dt_txt) {
-    let day = dt_txt;
-    let date = new Date(day);
-    let dateArray = date.toString().split(' ');
-    let dayOfWeek = dateArray[0];
-    return dayOfWeek;
-  }
 }
 
 export default new DateConvertor();
