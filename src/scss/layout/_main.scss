@@ -236,17 +236,12 @@
   border: 0;
 }
 
-.checkbox-units:focus + .units::before{
+.checkbox-units:hover + .units{
   box-shadow: 0 0 1px 2px $yellow;
 }
 
-.checkbox-units:checked + .units::before{
-  content: 'F';
-}
-
-.units::before{
+.units{
   position: absolute;
-  content: 'C';
   top:0;
   left: 0;
   width: 100%;

@@ -38,7 +38,7 @@ export default class WeatherForecastItem extends Component {
       {
         tag: 'span',
         classList: ['forecast-temp'],
-        content: Math.round(this.props.temperature) + `&deg;` + this.props.units
+        content: Math.round(this.props.temperature) + `&deg;`
       }
     ];
   }

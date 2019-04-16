@@ -41,18 +41,17 @@ export default class WeatherForecast extends Component {
   constructor(host, props) {
     super(host, props);
     AppState.watch('USERINPUT', this.updateMyself);
-    WeatherDataService.getWeatherForecast('Kyiv', 'metric').then(
-      result =>console.log(result))
+    AppState.watch('UNITS', this.changeUnits);
   }
 
   init() {
-    ['updateMyself'].forEach(
+    ['updateMyself','changeUnits'].forEach(
       methodName => (this[methodName] = this[methodName].bind(this))
     );
     this.forecastWeather = null;
     this.state = {
-      units: 'metric',
-      unit: 'C',
+      city: null,
+      units: localStorage.getItem('units') ? localStorage.getItem('units') : 'metric',
       day: null,
     };
   }
@@ -63,8 +62,18 @@ export default class WeatherForecast extends Component {
       result => {
         this.forecastWeather = result;
         console.log(this.forecastWeather);//
-        // this.state.ID = this.forecastWeather.sys.sunrise;
+        this.state.city = this.forecastWeather.city.name;
         this.updateState(this.forecastWeather);
+      }
+    );
+  }
+
+  changeUnits(newUnits) {
+    WeatherDataService.getWeatherForecast(newUnits.city, newUnits.units).then(
+      result => {
+        this.forecastWeather = result;
+        this.state.city = this.forecastWeather.city.name;
+        this.updateState(newUnits);
       }
     );
   }
@@ -83,7 +92,6 @@ export default class WeatherForecast extends Component {
               dayOfWeek: this.forecastWeather.list[4].dt_txt,
               src: `${chooseIcon(this.forecastWeather.list[4].weather[0].icon)}`,
               temperature: this.forecastWeather.list[4].main.temp,
-              units: this.state.unit,
             },
           },
           {
@@ -93,7 +101,6 @@ export default class WeatherForecast extends Component {
               dayOfWeek: this.forecastWeather.list[12].dt_txt,
               src: `${chooseIcon(this.forecastWeather.list[12].weather[0].icon)}`,
               temperature: this.forecastWeather.list[12].main.temp,
-              units: this.state.unit,
             },
           },
           {
@@ -103,7 +110,6 @@ export default class WeatherForecast extends Component {
               dayOfWeek: this.forecastWeather.list[20].dt_txt,
               src: `${chooseIcon(this.forecastWeather.list[20].weather[0].icon)}`,
               temperature: this.forecastWeather.list[20].main.temp,
-              units: this.state.unit,
             },
           },
           {
@@ -113,7 +119,6 @@ export default class WeatherForecast extends Component {
               dayOfWeek: this.forecastWeather.list[28].dt_txt,
               src: `${chooseIcon(this.forecastWeather.list[28].weather[0].icon)}`,
               temperature: this.forecastWeather.list[28].main.temp,
-              units: this.state.unit,
             },
           },
           {
@@ -123,7 +128,6 @@ export default class WeatherForecast extends Component {
               dayOfWeek: this.forecastWeather.list[36].dt_txt,
               src: `${chooseIcon(this.forecastWeather.list[36].weather[0].icon)}`,
               temperature: this.forecastWeather.list[36].main.temp,
-              units: this.state.unit,
             },
           },
         ],

@@ -41,10 +41,11 @@ export default class CurentWeather extends Component {
   constructor(host, props) {
     super(host, props);
     AppState.watch('USERINPUT', this.updateMyself);
+    AppState.watch('UNITS', this.changeUnits);
   }
 
   init() {
-    ['updateMyself'].forEach(
+    ['updateMyself', 'changeUnits', 'switchUnits'].forEach(
       methodName => (this[methodName] = this[methodName].bind(this))
     );
     this.curentWeather = null;
@@ -52,7 +53,9 @@ export default class CurentWeather extends Component {
     this.state = {
       city: null,
       country: null,
-      units: 'metric',
+      units: localStorage.getItem('units') ? localStorage.getItem('units') : 'metric',
+      unit: localStorage.getItem('unit') ? localStorage.getItem('unit') : 'C',
+      speed: localStorage.getItem('speed') ? localStorage.getItem('speed') : 'm/s',
       day: null,
       ID: null
     };
@@ -63,7 +66,7 @@ export default class CurentWeather extends Component {
     WeatherDataService.getCurrentWeather(searchValue, this.state.units).then(
       result => {
         this.curentWeather = result;
-        console.log(this.curentWeather);//
+        console.log(this.curentWeather); //
         this.state.city = this.curentWeather.name;
         this.state.country = this.curentWeather.sys.country;
         this.state.day = this.curentWeather.sys.sunrise;
@@ -71,6 +74,47 @@ export default class CurentWeather extends Component {
         this.updateState(this.curentWeather);
       }
     );
+  }
+
+  changeUnits(newUnits) {
+    WeatherDataService.getCurrentWeather(newUnits.city, newUnits.units).then(
+      result => {
+        this.curentWeather = result;
+        this.updateState(newUnits);
+      }
+    );
+  }
+
+  switchUnits(event) {
+    const metric = 'metric';
+    const imperial = 'imperial';
+
+    if (event.target.value === metric) {
+      event.target.value = imperial;
+      localStorage.setItem('units', imperial);
+      localStorage.setItem('unit', 'F');
+      localStorage.setItem('unit', 'F');
+      localStorage.setItem('speed', 'mph');
+      this.state.units = imperial;
+      this.state.unit = 'F';
+      this.state.speed = 'mph';
+      AppState.update('UNITS', {
+        city: this.state.city,
+        units: imperial
+      });
+    } else if (event.target.value === imperial) {
+      event.target.value = metric;
+      localStorage.setItem('units', metric);
+      localStorage.setItem('unit', 'C');
+      localStorage.setItem('speed', 'm/s');
+      this.state.units = metric;
+      this.state.unit = 'C';
+      this.state.speed = 'm/s';
+      AppState.update('UNITS', {
+        city: this.state.city,
+        units: metric
+      });
+    }
   }
 
   render() {
@@ -128,16 +172,24 @@ export default class CurentWeather extends Component {
                       {
                         tag: 'input',
                         classList: ['checkbox-units', 'checkbox'],
+                        eventHandlers: {
+                          change: this.switchUnits
+                        },
                         attributes: [
                           {
                             name: 'type',
                             value: 'checkbox'
+                          },
+                          {
+                            name: 'value',
+                            value: this.state.units
                           }
                         ]
                       },
                       {
                         tag: 'div',
-                        classList: ['units']
+                        classList: ['units'],
+                        content: this.state.unit
                       }
                     ]
                   }
@@ -156,9 +208,7 @@ export default class CurentWeather extends Component {
                       },
                       {
                         name: 'src',
-                        value: `${chooseIcon(
-                          this.state.ID
-                        )}`
+                        value: `${chooseIcon(this.state.ID)}`
                       },
                       {
                         name: 'draggable',
@@ -209,7 +259,9 @@ export default class CurentWeather extends Component {
                 tag: 'span',
                 classList: ['wind', 'subinfo-item'],
                 content:
-                  `Wind: ` + Math.round(this.curentWeather.wind.speed) + ` km/h`
+                  `Wind: ` +
+                  Math.round(this.curentWeather.wind.speed) +
+                  ` ${this.state.speed}`
               },
               {
                 tag: 'span',
