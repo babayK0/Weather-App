@@ -4,9 +4,9 @@
 Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Course](https://github.com/kottans/frontend) :smile_cat:
 
 ## Table of Contents
-* [Features](https://github.com/babayK0/Weather-App/blob/master/README.md#features)
-* [Features which will be added soon](https://github.com/babayK0/Weather-App/blob/master/README.md#features-which-will-be-added-soon)
-* [Known Issues](https://github.com/babayK0/Weather-App/blob/master/README.md#known-issues)
+* [Features](https://github.com/babayK0/Weather-App#features)
+* [Features which will be added soon](https://github.com/babayK0/Weather-App#features-which-will-be-added-soon)
+* [Known Issues](https://github.com/babayK0/Weather-App#known-issues)
 ### Features
 * Search by City name
 * Current weather 
@@ -25,7 +25,7 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Known Issues
-- [ ] The state of the ForecastWeather component is unstable. (Reset if the city is entered incorrectly)
+- [x] ~~The state of the WeatherForecast component is unstable. (Reset if the city is entered incorrectly)~~
 - [ ] Some videos are too big
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
