@@ -26,5 +26,6 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 ### Known Issues
 - [x] ~~The state of the WeatherForecast component is unstable. (Reset if the city is entered incorrectly)~~
 - [ ] Some videos are too big
+- [ ] Video does not work properly in Safari
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
