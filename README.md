@@ -1,6 +1,7 @@
 # Weather-App
-[Weather App](https://babayk0.github.io/Weather-App/) with employing public API.
 
+Weather App with employing public API.
+#### [DEMO](https://babayk0.github.io/Weather-App/)
 Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Course](https://github.com/kottans/frontend) :smile_cat:
 
 ## Table of Contents
