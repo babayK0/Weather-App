@@ -35,6 +35,7 @@ export default class VideoWeather extends Component {
   constructor(host, props) {
     super(host, props);
     AppState.watch('USERINPUT', this.updateMyself);
+    AppState.watch('SHOWCITY', this.updateMyself);
   }
 
   init() {

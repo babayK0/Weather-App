@@ -41,6 +41,7 @@ export default class CurentWeather extends Component {
   constructor(host, props) {
     super(host, props);
     AppState.watch('USERINPUT', this.updateMyself);
+    AppState.watch('SHOWCITY', this.updateMyself);
     AppState.watch('UNITS', this.changeUnits);
   }
 
@@ -53,16 +54,22 @@ export default class CurentWeather extends Component {
     this.state = {
       city: null,
       country: null,
-      units: localStorage.getItem('units') ? localStorage.getItem('units') : 'metric',
+      units: localStorage.getItem('units')
+        ? localStorage.getItem('units')
+        : 'metric',
       unit: localStorage.getItem('unit') ? localStorage.getItem('unit') : 'C',
-      speed: localStorage.getItem('speed') ? localStorage.getItem('speed') : 'm/s',
+      speed: localStorage.getItem('speed')
+        ? localStorage.getItem('speed')
+        : 'm/s',
       day: null,
-      ID: null
+      ID: null,
+      history: localStorage.getItem('history')
+        ? JSON.parse(localStorage.getItem('history'))
+        : []
     };
   }
 
   updateMyself(searchValue) {
-    console.log(`curent weather at ${searchValue}`);
     WeatherDataService.getCurrentWeather(searchValue, this.state.units).then(
       result => {
         this.curentWeather = result;
@@ -72,6 +79,16 @@ export default class CurentWeather extends Component {
         this.state.day = this.curentWeather.sys.sunrise;
         this.state.ID = this.curentWeather.weather[0].icon;
         this.updateState(this.curentWeather);
+
+        if (this.state.history.includes(this.state.city)) return;
+        if (this.state.history.length > 5) {
+          this.state.history.pop();
+          this.state.history.unshift(this.state.city);
+        } else {
+          this.state.history.unshift(this.state.city);
+        }
+        AppState.update('ADDTOHISTORY', this.state.city);
+        localStorage.setItem('history', JSON.stringify(this.state.history));
       }
     );
   }
@@ -104,7 +121,7 @@ export default class CurentWeather extends Component {
     localStorage.setItem('units', this.state.units);
     localStorage.setItem('unit', this.state.unit);
     localStorage.setItem('speed', this.state.speed);
-    
+
     AppState.update('UNITS', {
       city: this.state.city,
       units: this.state.units

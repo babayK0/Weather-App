@@ -3,6 +3,7 @@ import { SearchBar } from '../SearchBar';
 import { WeatherForecast } from '../WeatherForecast';
 import { CurentWeather } from '../CurentWeather';
 import { VideoWeather } from '../VideoWeather';
+import { WeatherLists } from '../WeatherLists';
 
 export default class App extends Component {
   constructor(host) {
@@ -15,20 +16,19 @@ export default class App extends Component {
     return [
       {
         tag: SearchBar,
-        containerTag: 'div',
       },
       {
         tag: CurentWeather,
-        containerTag: 'div',
       },
       {
         tag: WeatherForecast,
-        containerTag: 'div',
       },
       {
         tag: VideoWeather,
-        containerTag: 'div'
-      }
+      },
+      {
+        tag: WeatherLists,
+      },
     ];
   }
 }

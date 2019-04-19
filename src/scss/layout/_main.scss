@@ -13,29 +13,29 @@
   grid-template-areas:
     '. . s s s s s s s s . .'
     '. . . w w w w w w . . .'
-    '. . . w w w w w w . . .'
-    '. . . f f f f f f . . .';
+    '. . . f f f f f f . . .'
+    '. . . l l l l l l . . .';
     justify-items: center;
   @include mobileS{
     grid-template-areas:
     's s s s s s s s s s s s'
     'w w w w w w w w w w w w'
-    'w w w w w w w w w w w w'
-    'f f f f f f f f f f f f';
+    'f f f f f f f f f f f f'
+    'l l l l l l l l l l l l';
   }
   @include mobile {
     grid-template-areas:
     '. s s s s s s s s s s .'
     '. w w w w w w w w w w .'
-    '. w w w w w w w w w w .'
-    '. f f f f f f f f f f .';
+    '. f f f f f f f f f f .'
+    '. l l l l l l l l l l .';
   }
   @include tablet {
     grid-template-areas:
     '. . s s s s s s s s . .'
     '. . w w w w w w w w . .'
-    '. . w w w w w w w w . .'
-    '. . f f f f f f f f . .';
+    '. . f f f f f f f f . .'
+    '. . l l l l l l l l . .';
   }
 }
 
@@ -43,6 +43,8 @@
   grid-area: s;
   width: 60%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   align-items: center;
   @include mobileS{
@@ -70,7 +72,7 @@
 
 .container > div:nth-child(3) {
   grid-area: f;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   width: 100%;
   border-top: 1px solid $white;
   border-bottom-left-radius: 20px;
@@ -88,6 +90,61 @@
   background-color: transparent;
 }
 
+.container > div:nth-child(5){
+  grid-area: l;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: $grey;
+}
+
+.weather-list{
+  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid $white;
+  border-bottom: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.list-title{
+  width: 100%;
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  border-bottom: 1px solid $white;
+}
+
+.weather-list > div{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.history-city{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100% / 6);
+  margin: 0;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.history-city:hover{
+  cursor: pointer;
+  color: $yellow;
+}
+
+.history-city:nth-child(even){
+  background-color: $grey;
+}
 /*searchbar*/
 .searchbar-container {
   grid-area: s;

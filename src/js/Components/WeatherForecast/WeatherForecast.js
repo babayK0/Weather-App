@@ -1,6 +1,6 @@
 import Component from '../../framework/Component';
 import AppState from '../../Services/AppState';
-import WeatherDataService from "../../Services/WeatherDataService.js";
+import WeatherDataService from '../../Services/WeatherDataService.js';
 import WeatherForecastItem from '../WeatherForecastItem/WeatherForecastItem';
 
 import clearD from '../../../img/clearD.png';
@@ -41,26 +41,28 @@ export default class WeatherForecast extends Component {
   constructor(host, props) {
     super(host, props);
     AppState.watch('USERINPUT', this.updateMyself);
+    AppState.watch('SHOWCITY', this.updateMyself);
     AppState.watch('UNITS', this.changeUnits);
   }
 
   init() {
-    ['updateMyself','changeUnits'].forEach(
+    ['updateMyself', 'changeUnits'].forEach(
       methodName => (this[methodName] = this[methodName].bind(this))
     );
     this.forecastWeather = null;
     this.state = {
       city: null,
-      units: localStorage.getItem('units') ? localStorage.getItem('units') : 'metric',
+      units: localStorage.getItem('units')
+        ? localStorage.getItem('units')
+        : 'metric'
     };
   }
 
   updateMyself(searchValue) {
-    console.log(`forecast weather at ${searchValue}`);
     WeatherDataService.getWeatherForecast(searchValue, this.state.units).then(
       result => {
         this.forecastWeather = result;
-        console.log(this.forecastWeather);//
+        console.log(this.forecastWeather); //
         this.state.city = this.forecastWeather.city.name;
         this.updateState(this.forecastWeather);
       }
@@ -79,58 +81,69 @@ export default class WeatherForecast extends Component {
 
   render() {
     return this.forecastWeather !== null
-    ? [
-      {
-        tag: 'ul',
-        classList: ['forecast-list'],
-        children: [
+      ? [
           {
-            tag: WeatherForecastItem,
-            containerTag: 'li',
-            props: {
-              dayOfWeek: this.forecastWeather.list[4].dt,
-              src: `${chooseIcon(this.forecastWeather.list[4].weather[0].icon)}`,
-              temperature: this.forecastWeather.list[4].main.temp,
-            },
-          },
-          {
-            tag: WeatherForecastItem,
-            containerTag: 'li',
-            props: {
-              dayOfWeek: this.forecastWeather.list[12].dt,
-              src: `${chooseIcon(this.forecastWeather.list[12].weather[0].icon)}`,
-              temperature: this.forecastWeather.list[12].main.temp,
-            },
-          },
-          {
-            tag: WeatherForecastItem,
-            containerTag: 'li',
-            props: {
-              dayOfWeek: this.forecastWeather.list[20].dt,
-              src: `${chooseIcon(this.forecastWeather.list[20].weather[0].icon)}`,
-              temperature: this.forecastWeather.list[20].main.temp,
-            },
-          },
-          {
-            tag: WeatherForecastItem,
-            containerTag: 'li',
-            props: {
-              dayOfWeek: this.forecastWeather.list[28].dt,
-              src: `${chooseIcon(this.forecastWeather.list[28].weather[0].icon)}`,
-              temperature: this.forecastWeather.list[28].main.temp,
-            },
-          },
-          {
-            tag: WeatherForecastItem,
-            containerTag: 'li',
-            props: {
-              dayOfWeek: this.forecastWeather.list[36].dt,
-              src: `${chooseIcon(this.forecastWeather.list[36].weather[0].icon)}`,
-              temperature: this.forecastWeather.list[36].main.temp,
-            },
-          },
-        ],
-      }
-    ] : '';
+            tag: 'ul',
+            classList: ['forecast-list'],
+            children: [
+              {
+                tag: WeatherForecastItem,
+                containerTag: 'li',
+                props: {
+                  dayOfWeek: this.forecastWeather.list[4].dt,
+                  src: `${chooseIcon(
+                    this.forecastWeather.list[4].weather[0].icon
+                  )}`,
+                  temperature: this.forecastWeather.list[4].main.temp
+                }
+              },
+              {
+                tag: WeatherForecastItem,
+                containerTag: 'li',
+                props: {
+                  dayOfWeek: this.forecastWeather.list[12].dt,
+                  src: `${chooseIcon(
+                    this.forecastWeather.list[12].weather[0].icon
+                  )}`,
+                  temperature: this.forecastWeather.list[12].main.temp
+                }
+              },
+              {
+                tag: WeatherForecastItem,
+                containerTag: 'li',
+                props: {
+                  dayOfWeek: this.forecastWeather.list[20].dt,
+                  src: `${chooseIcon(
+                    this.forecastWeather.list[20].weather[0].icon
+                  )}`,
+                  temperature: this.forecastWeather.list[20].main.temp
+                }
+              },
+              {
+                tag: WeatherForecastItem,
+                containerTag: 'li',
+                props: {
+                  dayOfWeek: this.forecastWeather.list[28].dt,
+                  src: `${chooseIcon(
+                    this.forecastWeather.list[28].weather[0].icon
+                  )}`,
+                  temperature: this.forecastWeather.list[28].main.temp
+                }
+              },
+              {
+                tag: WeatherForecastItem,
+                containerTag: 'li',
+                props: {
+                  dayOfWeek: this.forecastWeather.list[36].dt,
+                  src: `${chooseIcon(
+                    this.forecastWeather.list[36].weather[0].icon
+                  )}`,
+                  temperature: this.forecastWeather.list[36].main.temp
+                }
+              }
+            ]
+          }
+        ]
+      : '';
   }
 }
