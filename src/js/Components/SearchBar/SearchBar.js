@@ -3,7 +3,7 @@ import AppState from '../../Services/AppState';
 export default class SearchBar extends Component {
   constructor(host, props) {
     super(host, props);
-    AppState.watch("USERINPUT", this.updateMyself);
+    AppState.watch('USERINPUT', this.updateMyself);
   }
 
   init() {
@@ -19,7 +19,7 @@ export default class SearchBar extends Component {
     this.updateState(subState);
   }
 
-  onChange( event ){
+  onChange(event) {
     const searchValue = event.target.value;
     this.state.searchValue = searchValue;
   }
@@ -39,13 +39,13 @@ export default class SearchBar extends Component {
           {
             name: 'autocomplete',
             value: 'off'
-          },
+          }
         ],
         children: [
           {
             tag: 'input',
             classList: ['searchbar'],
-            eventHandlers: {change : this.onChange},
+            eventHandlers: { change: this.onChange },
             attributes: [
               {
                 name: 'type',
@@ -80,11 +80,11 @@ export default class SearchBar extends Component {
               {
                 name: 'title',
                 value: "What's the weather today?"
-              },
+              }
             ]
           }
         ],
-        eventHandlers: {submit : this.onSubmit},
+        eventHandlers: { submit: this.onSubmit }
       }
     ];
   }
