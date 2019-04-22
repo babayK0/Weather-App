@@ -1,11 +1,9 @@
 import Component from '../../framework/Component';
 import { History } from '../../Components/History';
 import { Favorites } from '../../Components/Favorites';
-import AppState from '../../Services/AppState';
 export default class WeatherLists extends Component {
   constructor(host, props) {
     super(host, props);
-    // AppState.watch("USERINPUT", this.updateMyself);
   }
 
   init() {}
@@ -23,7 +21,13 @@ export default class WeatherLists extends Component {
             content: 'Search History'
           },
           {
-            tag: History,
+            tag: 'div',
+            classList: ['history-list'],
+            children: [
+              {
+                tag: History
+              }
+            ]
           }
         ],
       },
@@ -38,7 +42,13 @@ export default class WeatherLists extends Component {
             content: 'Favorites'
           },
           {
-            tag: Favorites,
+            tag: 'div',
+            classList: ['favorites-list'],
+            children: [
+              {
+                tag: Favorites
+              }
+            ]
           }
         ],
       }

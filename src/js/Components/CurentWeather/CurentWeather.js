@@ -46,7 +46,7 @@ export default class CurentWeather extends Component {
   }
 
   init() {
-    ['updateMyself', 'changeUnits', 'switchUnits'].forEach(
+    ['updateMyself', 'changeUnits', 'switchUnits', 'addToFavorites', 'checkFavorite'].forEach(
       methodName => (this[methodName] = this[methodName].bind(this))
     );
     this.curentWeather = null;
@@ -65,7 +65,10 @@ export default class CurentWeather extends Component {
       ID: null,
       history: localStorage.getItem('history')
         ? JSON.parse(localStorage.getItem('history'))
-        : []
+        : [],
+      favorites: localStorage.getItem('favorites')
+        ? JSON.parse(localStorage.getItem('favorites'))
+        : [],
     };
   }
 
@@ -73,7 +76,6 @@ export default class CurentWeather extends Component {
     WeatherDataService.getCurrentWeather(searchValue, this.state.units).then(
       result => {
         this.curentWeather = result;
-        console.log(this.curentWeather); //
         this.state.city = this.curentWeather.name;
         this.state.country = this.curentWeather.sys.country;
         this.state.day = this.curentWeather.sys.sunrise;
@@ -87,10 +89,32 @@ export default class CurentWeather extends Component {
         } else {
           this.state.history.unshift(this.state.city);
         }
-        AppState.update('ADDTOHISTORY', this.state.city);
         localStorage.setItem('history', JSON.stringify(this.state.history));
+        AppState.update('ADDTOHISTORY', this.state.city);
       }
     );
+  }
+
+  addToFavorites({ target }) {
+    if (target.checked) {
+      if (this.state.favorites.includes(this.state.city)) return;
+      this.state.favorites.unshift(this.state.city);
+    } else {
+      this.state.favorites = this.state.favorites.filter(favorite => {
+        return favorite !== this.state.city;
+      });
+    }
+    localStorage.setItem('favorites', JSON.stringify(this.state.favorites));
+    AppState.update('ADDTOFAVORITES', this.state.city);
+    console.log(this.state.favorites);
+  }
+
+  checkFavorite(){
+    if (this.state.favorites.includes(this.state.city)){
+      return 'checked';
+    }else {
+      return
+    }
   }
 
   changeUnits(newUnits) {
@@ -156,8 +180,14 @@ export default class CurentWeather extends Component {
                           {
                             name: 'type',
                             value: 'checkbox'
+                          },
+                          {
+                            name: this.checkFavorite(),
                           }
-                        ]
+                        ],
+                        eventHandlers: {
+                          change: this.addToFavorites,
+                        }
                       },
                       {
                         tag: 'span',

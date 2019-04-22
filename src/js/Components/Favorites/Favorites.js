@@ -1,12 +1,10 @@
 import Component from '../../framework/Component';
 import AppState from '../../Services/AppState';
-import WeatherDataService from '../../Services/WeatherDataService.js';
-import DateConvertor from '../../Services/DateConvertor.js';
 
 export default class Favorites extends Component {
   constructor(host, props) {
     super(host, props);
-    // AppState.watch('USERINPUT', this.updateMyself);
+    AppState.watch('ADDTOFAVORITES', this.updateMyself);
   }
 
   init() {
@@ -15,9 +13,27 @@ export default class Favorites extends Component {
     );
   }
 
-  updateMyself(searchValue) {}
+  updateMyself() {
+    this._render();
+  }
+
+  showCity({ target }) {
+    AppState.update('SHOWCITY', target.innerText);
+  }
 
   render() {
-    return 'favorites';
+    const favorites = JSON.parse(localStorage.getItem('favorites'));
+    if (favorites) {
+      return favorites.map(cityName => {
+        return {
+          tag: 'p',
+          classList: ['favorites-city'],
+          content: cityName,
+          eventHandlers: {
+            click: this.showCity
+          }
+        };
+      });
+    } else return '';
   }
 }

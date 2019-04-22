@@ -62,7 +62,6 @@ export default class WeatherForecast extends Component {
     WeatherDataService.getWeatherForecast(searchValue, this.state.units).then(
       result => {
         this.forecastWeather = result;
-        console.log(this.forecastWeather); //
         this.state.city = this.forecastWeather.city.name;
         this.updateState(this.forecastWeather);
       }
