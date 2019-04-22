@@ -13,13 +13,13 @@ Developed as one of tasks at [Kottans](https://github.com/kottans) [FrontEnd Cou
 * Current weather 
 * 5 Days Forecast 
 * Switch between imperial and metric units
+* Liked cities list
+* History list
 * Source of data - [Open Weather Map](https://openweathermap.org/)
 * Cool videos :sunglasses:
 
 [*--TOC--*](https://github.com/babayK0/Weather-App#table-of-contents)
 ### Features which will be added soon
-* *Liked cities list*
-* *History list*
 * *Autocomplete of city*
 * *Handling server errors (such as **404**)*
 
