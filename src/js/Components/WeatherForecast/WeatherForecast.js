@@ -17,24 +17,40 @@ import thunderstorm from '../../../img/thunderstorm.png';
 import fog from '../../../img/fog.png';
 
 const chooseIcon = weatherID => {
-  if (weatherID === '01d') return clearD;
-  if (weatherID === '01n') return clearN;
-  if (weatherID === '02d') return cloudyD;
-  if (weatherID === '02n') return cloudyN;
-  if (
-    weatherID === '03d' ||
-    weatherID === '03n' ||
-    weatherID === '04d' ||
-    weatherID === '04n'
-  )
-    return cloudy;
-  if (weatherID === '09d' || weatherID === '09n') return rain;
-  if (weatherID === '10d') return rainD;
-  if (weatherID === '10n') return rainN;
-  if (weatherID === '11d' || weatherID === '11n') return thunderstorm;
-  if (weatherID === '13d') return snowD;
-  if (weatherID === '13n') return snowN;
-  if (weatherID === '50d' || weatherID === '50n') return fog;
+  switch (weatherID) {
+    case '01d':
+      return clearD;
+    case '01n':
+      return clearN;
+    case '02d':
+      return cloudyD;
+    case '02n':
+      return cloudyN;
+    case '03d':
+    case '03n':
+    case '04d':
+    case '04n':
+      return cloudy;
+    case '09d':
+    case '09n':
+      return rain;
+    case '10d':
+      return rainD;
+    case '10n':
+      return rainN;
+    case '11d':
+    case '11n':
+      return thunderstorm;
+    case '13d':
+      return snowD;
+    case '13n':
+      return snowN;
+    case '50d':
+    case '50n':
+      return fog;
+    default:
+      break;
+  }
 };
 
 export default class WeatherForecast extends Component {

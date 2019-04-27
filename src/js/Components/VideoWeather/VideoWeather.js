@@ -10,26 +10,34 @@ import videoThunderstorm from '../../../video/min_thunderstorm.mp4';
 import videoFog from '../../../video/Fog.mp4';
 
 const chooseVideo = weatherID => {
-  if (weatherID === '01d' || weatherID === '01n') return videoClear;
-  if (
-    weatherID === '02d' ||
-    weatherID === '02n' ||
-    weatherID === '03d' ||
-    weatherID === '03n' ||
-    weatherID === '04d' ||
-    weatherID === '04n'
-  )
-    return videoClouds;
-  if (
-    weatherID === '09d' ||
-    weatherID === '09n' ||
-    weatherID === '10d' ||
-    weatherID === '10n'
-  )
-    return videoRain;
-  if (weatherID === '11d' || weatherID === '11n') return videoThunderstorm;
-  if (weatherID === '13d'|| weatherID === '13n') return videoSnow;
-  if (weatherID === '50d' || weatherID === '50n') return videoFog;
+  switch (weatherID) {
+    case '01d':
+    case '01n':
+      return videoClear;
+    case '02d':
+    case '02n':
+    case '03d':
+    case '03n':
+    case '04d':
+    case '04n':
+      return videoClouds;
+    case '09d':
+    case '09n':
+    case '10d':
+    case '10n':
+      return videoRain;
+    case '11d':
+    case '11n':
+      return videoThunderstorm;
+    case '13d':
+    case '13n':
+      return videoSnow;
+    case '50d':
+    case '50n':
+      return videoFog;
+    default:
+      break;
+  }
 };
 export default class VideoWeather extends Component {
   constructor(host, props) {

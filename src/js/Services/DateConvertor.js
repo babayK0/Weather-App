@@ -7,8 +7,8 @@ class DateConvertor{
     let month = (`0${dt.getMonth()+1}`).slice(-2);
     let date = (`0${dt.getDate()}`).slice(-2);
     let time = `${date}.${month}.${year}`;
-    if(day===true) return dayOfWeek;
-    else return time;
+    if(day) return dayOfWeek;
+    return time;
   }
 }
 

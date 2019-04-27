@@ -17,24 +17,59 @@ import thunderstorm from '../../../img/thunderstorm.png';
 import fog from '../../../img/fog.png';
 
 const chooseIcon = weatherID => {
-  if (weatherID === '01d') return clearD;
-  if (weatherID === '01n') return clearN;
-  if (weatherID === '02d') return cloudyD;
-  if (weatherID === '02n') return cloudyN;
-  if (
-    weatherID === '03d' ||
-    weatherID === '03n' ||
-    weatherID === '04d' ||
-    weatherID === '04n'
-  )
-    return cloudy;
-  if (weatherID === '09d' || weatherID === '09n') return rain;
-  if (weatherID === '10d') return rainD;
-  if (weatherID === '10n') return rainN;
-  if (weatherID === '11d' || weatherID === '11n') return thunderstorm;
-  if (weatherID === '13d') return snowD;
-  if (weatherID === '13n') return snowN;
-  if (weatherID === '50d' || weatherID === '50n') return fog;
+  switch (weatherID) {
+    case '01d':
+      return clearD;
+    case '01n':
+      return clearN;
+    case '02d':
+      return cloudyD;
+    case '02n':
+      return cloudyN;
+    case '03d':
+    case '03n':
+    case '04d':
+    case '04n':
+      return cloudy;
+    case '09d':
+    case '09n':
+      return rain;
+    case '10d':
+      return rainD;
+    case '10n':
+      return rainN;
+    case '11d':
+    case '11n':
+      return thunderstorm;
+    case '13d':
+      return snowD;
+    case '13n':
+      return snowN;
+    case '50d':
+    case '50n':
+      return fog;
+    default:
+      break;
+  }
+
+  // if (weatherID === '01d') return clearD;
+  // if (weatherID === '01n') return clearN;
+  // if (weatherID === '02d') return cloudyD;
+  // if (weatherID === '02n') return cloudyN;
+  // if (
+  //   weatherID === '03d' ||
+  //   weatherID === '03n' ||
+  //   weatherID === '04d' ||
+  //   weatherID === '04n'
+  // )
+  //   return cloudy;
+  // if (weatherID === '09d' || weatherID === '09n') return rain;
+  // if (weatherID === '10d') return rainD;
+  // if (weatherID === '10n') return rainN;
+  // if (weatherID === '11d' || weatherID === '11n') return thunderstorm;
+  // if (weatherID === '13d') return snowD;
+  // if (weatherID === '13n') return snowN;
+  // if (weatherID === '50d' || weatherID === '50n') return fog;
 };
 
 export default class CurentWeather extends Component {
@@ -46,9 +81,13 @@ export default class CurentWeather extends Component {
   }
 
   init() {
-    ['updateMyself', 'changeUnits', 'switchUnits', 'addToFavorites', 'checkFavorite'].forEach(
-      methodName => (this[methodName] = this[methodName].bind(this))
-    );
+    [
+      'updateMyself',
+      'changeUnits',
+      'switchUnits',
+      'addToFavorites',
+      'checkFavorite'
+    ].forEach(methodName => (this[methodName] = this[methodName].bind(this)));
     this.curentWeather = null;
     this.forecastWeather = null;
     this.state = {
@@ -68,7 +107,7 @@ export default class CurentWeather extends Component {
         : [],
       favorites: localStorage.getItem('favorites')
         ? JSON.parse(localStorage.getItem('favorites'))
-        : [],
+        : []
     };
   }
 
@@ -108,11 +147,9 @@ export default class CurentWeather extends Component {
     AppState.update('ADDTOFAVORITES', this.state.city);
   }
 
-  checkFavorite(){
-    if (this.state.favorites.includes(this.state.city)){
+  checkFavorite() {
+    if (this.state.favorites.includes(this.state.city)) {
       return 'checked';
-    }else {
-      return
     }
   }
 
@@ -181,11 +218,11 @@ export default class CurentWeather extends Component {
                             value: 'checkbox'
                           },
                           {
-                            name: this.checkFavorite(),
+                            name: this.checkFavorite()
                           }
                         ],
                         eventHandlers: {
-                          change: this.addToFavorites,
+                          change: this.addToFavorites
                         }
                       },
                       {
