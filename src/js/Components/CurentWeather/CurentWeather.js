@@ -143,17 +143,15 @@ export default class CurentWeather extends Component {
     );
   }
 
-  switchUnits(event) {
+  switchUnits() {
     const metric = 'metric';
     const imperial = 'imperial';
 
-    if (event.target.value === metric) {
-      event.target.value = imperial;
+    if (this.state.units === metric) {
       this.state.units = imperial;
       this.state.unit = 'F';
       this.state.speed = 'mph';
-    } else if (event.target.value === imperial) {
-      event.target.value = metric;
+    } else if (this.state.units === imperial) {
       this.state.units = metric;
       this.state.unit = 'C';
       this.state.speed = 'm/s';
