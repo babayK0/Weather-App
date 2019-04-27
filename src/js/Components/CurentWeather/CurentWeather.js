@@ -51,25 +51,6 @@ const chooseIcon = weatherID => {
     default:
       break;
   }
-
-  // if (weatherID === '01d') return clearD;
-  // if (weatherID === '01n') return clearN;
-  // if (weatherID === '02d') return cloudyD;
-  // if (weatherID === '02n') return cloudyN;
-  // if (
-  //   weatherID === '03d' ||
-  //   weatherID === '03n' ||
-  //   weatherID === '04d' ||
-  //   weatherID === '04n'
-  // )
-  //   return cloudy;
-  // if (weatherID === '09d' || weatherID === '09n') return rain;
-  // if (weatherID === '10d') return rainD;
-  // if (weatherID === '10n') return rainN;
-  // if (weatherID === '11d' || weatherID === '11n') return thunderstorm;
-  // if (weatherID === '13d') return snowD;
-  // if (weatherID === '13n') return snowN;
-  // if (weatherID === '50d' || weatherID === '50n') return fog;
 };
 
 export default class CurentWeather extends Component {
