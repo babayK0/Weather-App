@@ -106,7 +106,6 @@ export default class CurentWeather extends Component {
     }
     localStorage.setItem('favorites', JSON.stringify(this.state.favorites));
     AppState.update('ADDTOFAVORITES', this.state.city);
-    console.log(this.state.favorites);
   }
 
   checkFavorite(){
